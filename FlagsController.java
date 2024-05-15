@@ -18,99 +18,157 @@ import java.util.Random;
 public class FlagsController {
 
     @FXML
-    private ImageView flagDisplay; // ImageView for displaying the flag
+    private ImageView flagDisplay;
     @FXML
-    private Text text; // Text for displaying the guessed letters
+    private Text text;
     @FXML
-    private Text winStatus; // Text for displaying win/lose status
+    private Text winStatus;
     @FXML
-    private Text realWord; // Text for displaying the correct country name
+    private Text realWord;
     @FXML
-    private Pane buttons; // Pane containing letter buttons
+    private Pane buttons;
     @FXML
-    private Label countryName; // Label for displaying the country name
+    private Label countryName;
+    @FXML
+    private Button changeFlagButton;
+    @FXML
+    private Button hintButton;
+    @FXML
+    private Pane popupPane; // Added Pane for popup
+    @FXML
+    private Text popupMessage; // Added Text for popup message
 
-    private int mistakes; // Counter for incorrect guesses
-    private int correct; // Counter for correct guesses
-    private String myWord; // The name of the country
-    private List<String> answer; // List to store correct guesses
-    private CountryData countryData; // Instance of CountryData to get country information
+    private int mistakes;
+    private int correct;
+    private String name;
+    private List<String> answer;
+    private CountryData countryData;
+    private List<Integer> unrevealedIndices;
 
     @FXML
     public void initialize() {
-        // Initialize CountryData instance
         countryData = new CountryData();
+        loadNewCountry();
+    }
+
+    private void loadNewCountry() {
+        Country randomCountry = countryData.getRandomCountry();
+        if (randomCountry == null) {
+            System.out.println("No country was fetched");
+            return;
+        }
         try {
-            // Get a random country
-            Country randomCountry = countryData.getRandomCountry();
-            // Set the country name label
-            countryName.setText(randomCountry.getMyWord());
-            // Set the country flag image
             updateFlagImage(randomCountry.getFlagImagePath());
-            // Initialize game variables
-            myWord = randomCountry.getMyWord();
-            answer = new ArrayList<>();
-            for (int i = 0; i < myWord.length(); i++) {
-                answer.add("_"); // Initialize with underscores for each letter
+            name = randomCountry.getName();
+            if (name == null) {
+                System.out.println("Country name is null");
+                return;
             }
-            // Update displayed text with underscores
+            countryName.setText(name);
+            answer = new ArrayList<>();
+            unrevealedIndices = new ArrayList<>();
+            for (int i = 0; i < name.length(); i++) {
+                answer.add("_");
+                unrevealedIndices.add(i);
+            }
             updateDisplayedText();
+            winStatus.setText("");
+            realWord.setText("");
+            popupPane.setVisible(false); // Hide popup initially
+            buttons.setDisable(false);
+            for (int i = 0; i < buttons.getChildren().size(); i++) {
+                if (buttons.getChildren().get(i) instanceof Button) {
+                    buttons.getChildren().get(i).setDisable(false);
+                }
+            }
+            hintButton.setDisable(false);
+            mistakes = 0;
+            correct = 0;
         } catch (FileNotFoundException e) {
+            System.out.println("Failed to load image: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void updateFlagImage(String imageName) throws FileNotFoundException {
-        // Construct the file path
-        // Load image from resources
-        InputStream input = getClass().getClassLoader().getResourceAsStream(imageName);
+        String path = "/flags/" + imageName;
+        InputStream input = getClass().getResourceAsStream(path);
         if (input == null) {
-            throw new FileNotFoundException("Image file not found: " + imageName);
+            throw new FileNotFoundException("Image file not found: " + path);
         }
         Image image = new Image(input);
         flagDisplay.setImage(image);
     }
 
-
     @FXML
     private void onClick(ActionEvent event) {
+        if (name == null) {
+            System.out.println("Name not initialized");
+            return;
+        }
         Button clickedButton = (Button) event.getSource();
         String letter = clickedButton.getText();
-        clickedButton.setDisable(true); // Disable the clicked button
+        System.out.println("Clicked letter: " + letter);
+        clickedButton.setDisable(true);
         boolean correctGuess = false;
 
-        // Check if the guessed letter is correct
-        for (int i = 0; i < myWord.length(); i++) {
-            if (Character.toString(myWord.charAt(i)).equalsIgnoreCase(letter)) {
+        for (int i = 0; i < name.length(); i++) {
+            if (Character.toString(name.charAt(i)).equalsIgnoreCase(letter)) {
                 answer.set(i, letter);
+                unrevealedIndices.remove((Integer) i);
                 correctGuess = true;
                 correct++;
             }
         }
 
-        // Update displayed text with correct guesses
+        System.out.println("Current answer state: " + answer);
         updateDisplayedText();
 
-        // Check win/lose condition
-        if (correct == myWord.length()) {
-            winStatus.setText("You Win!");
-            buttons.setDisable(true); // Disable all buttons
+        if (correct == name.length()) {
+            popupMessage.setText("You Win!");
+            popupPane.setVisible(true);
+            buttons.setDisable(true);
+            hintButton.setDisable(true);
         } else if (!correctGuess) {
-            // Increment mistakes counter for incorrect guesses
             mistakes++;
-            // Check for losing condition
             if (mistakes == 6) {
-                winStatus.setText("You Lose!");
-                realWord.setText("The actual Country was " + myWord);
-                buttons.setDisable(true); // Disable all buttons
+                popupMessage.setText("You Lose! The actual Country was " + name);
+                popupPane.setVisible(true);
+                buttons.setDisable(true);
+                hintButton.setDisable(true);
             }
         }
     }
 
     private void updateDisplayedText() {
-        // Combine the answer list into a single string
         String displayedText = String.join(" ", answer);
-        // Set the displayed text
         text.setText(displayedText);
+    }
+
+    @FXML
+    private void handleChangeFlag(ActionEvent event) {
+        loadNewCountry();
+    }
+
+    @FXML
+    private void handleHint(ActionEvent event) {
+        if (!unrevealedIndices.isEmpty()) {
+            int randomIndex = unrevealedIndices.remove(new Random().nextInt(unrevealedIndices.size()));
+            String letter = Character.toString(name.charAt(randomIndex));
+            answer.set(randomIndex, letter);
+            correct++;
+            updateDisplayedText();
+            if (correct == name.length()) {
+                popupMessage.setText("You Win!");
+                popupPane.setVisible(true);
+                buttons.setDisable(true);
+                hintButton.setDisable(true);
+            }
+        }
+    }
+
+    @FXML
+    private void handlePopupClose(ActionEvent event) {
+        popupPane.setVisible(false);
     }
 }
