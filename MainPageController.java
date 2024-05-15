@@ -1,4 +1,4 @@
-package com.example.geoquiz;
+package com.example.demo1;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -23,57 +23,53 @@ public class MainPageController {
     private Button backtologin;
 
     @FXML
-    public void intialize(){
+    public void initialize() {
         helpText.setVisible(false);
     }
+
     @FXML
     public void displaytext(ActionEvent event) {
-        // Display help text when the HelpButton is clicked
-
         helpText.setVisible(true);
 
-        // Create a timeline to hide the help text after 3 seconds
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(3), event1 -> {
-                    // Hide the help text after 3 seconds
-                    helpText.setVisible(false);
-                })
+                new KeyFrame(Duration.seconds(3), event1 -> helpText.setVisible(false))
         );
         timeline.play();
     }
+
     @FXML
     public void goBackToLogin(ActionEvent event) {
         try {
-            // Load the login page FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginPageGeo.fxml"));
             Parent root = loader.load();
-
-            // Get the stage from the event source
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Create a new scene with the loaded login page root node
             Scene scene = new Scene(root);
-
-            // Set the new scene on the current stage
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void presstoplaces(ActionEvent event) {
+    @FXML
+    public void handleToCapitals(ActionEvent event) {
         try {
-            // Load the Places.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Places.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Capitals.fxml"));
             Parent root = loader.load();
-
-            // Get the stage from the event source
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Create a new scene with the loaded Places.fxml root node
             Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-            // Set the new scene on the current stage
+    @FXML
+    public void handleToFlags(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Flags.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
