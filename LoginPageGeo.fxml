@@ -12,10 +12,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="rootelement" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geoquiz.LoginPageController">
+<HBox fx:id="rootelement" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.LoginPageController">
     <AnchorPane prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #035E7B;">
         <ImageView fitHeight="195.0" fitWidth="250.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../images/Screenshot_2024-05-06_102851-removebg-preview.png" />
+            <Image url="@images/Screenshot_2024-05-06_102851-removebg-preview.png" />
         </ImageView>
         <Label layoutX="26.0" layoutY="233.0" prefHeight="28.0" prefWidth="198.0" text="Where Knowledge" textAlignment="CENTER" textFill="WHITE">
             <font>
