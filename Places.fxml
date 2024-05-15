@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #035E7B;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geoquiz.PlacesController">
+   <children>
+      <AnchorPane prefHeight="70.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="56.0" fitWidth="575.0" layoutX="13.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Cool Text - Where is this place 458329525996920.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="543.0" prefWidth="600.0">
+         <children>
+            <Pane layoutX="144.0" layoutY="6.0" prefHeight="204.0" prefWidth="309.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="146.0" AnchorPane.topAnchor="6.0">
+               <children>
+                  <ImageView fitWidth="297.0" layoutX="6.0" layoutY="5.5" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/RomePic.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="144.0" layoutY="224.0" prefHeight="17.0" prefWidth="309.0" textAlignment="CENTER" AnchorPane.bottomAnchor="87.0">
+               <font>
+                  <Font name="Impact" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textField" alignment="CENTER" layoutX="225.0" layoutY="243.0" prefHeight="30.0" prefWidth="150.0" promptText="Enter your answer here..." AnchorPane.bottomAnchor="50.333333333333314" AnchorPane.topAnchor="243.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

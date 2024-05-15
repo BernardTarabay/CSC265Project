@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="rootelement" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geoquiz.LoginPageController">
+    <AnchorPane prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #035E7B;">
+        <ImageView fitHeight="195.0" fitWidth="250.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/Screenshot_2024-05-06_102851-removebg-preview.png" />
+        </ImageView>
+        <Label layoutX="26.0" layoutY="233.0" prefHeight="28.0" prefWidth="198.0" text="Where Knowledge" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Consolas Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label layoutX="12.0" layoutY="267.0" prefHeight="28.0" prefWidth="225.0" text="Takes you Places!" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Consolas Bold" size="24.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane prefHeight="200.0" prefWidth="350.0">
+        <Text layoutX="123.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" textAlignment="CENTER">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Text>
+        <TextField fx:id="usernameField" layoutX="66.0" layoutY="133.0" prefHeight="30.0" prefWidth="218.0" promptText="Username..." />
+        <PasswordField fx:id="passwordField" layoutX="65.0" layoutY="200.0" prefHeight="30.0" prefWidth="218.0" promptText="Password..." />
+        <Label layoutX="133.0" layoutY="107.0" text="Username:" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="135.0" layoutY="174.0" text="Password:" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="17.0" />
+            </font>
+        </Label>
+        <Button fx:id="Buttontoscene2" layoutX="65.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="28.0" prefWidth="110.0" style="-fx-background-color: #035E7B;" text="Log in" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+        <Hyperlink layoutX="181.0" layoutY="258.0" text="Forgot password?" AnchorPane.rightAnchor="63.0">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Hyperlink>
+        <Button fx:id="exitbutton" layoutX="83.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="30.0" prefWidth="191.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-border-color: black;" text="Exit game">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+    </AnchorPane>
+</HBox>
