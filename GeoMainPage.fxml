@@ -9,40 +9,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geoquiz.MainPageController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.MainPageController">
    <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #035E7B;">
       <ImageView fitHeight="254.0" fitWidth="385.0" layoutX="110.0" layoutY="-70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="109.0">
-         <Image url="@../images/The_Art_of_Living__1_-removebg-preview.png" />
+         <Image url="@images/The_Art_of_Living__1_-removebg-preview.png" />
       </ImageView>
-      <Button fx:id="backtoscene1" contentDisplay="BOTTOM" layoutX="238.0" layoutY="159.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" text="Guess the Flag" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="158.66666666666666">
+      <Button fx:id="toCapitals" contentDisplay="BOTTOM" layoutX="238.0" layoutY="159.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="156.0" style="-fx-background-color: #FFD700; -fx-border-radius: 5px;" text="Guess the Capital" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="158.66666666666666" onAction="#handleToCapitals">
          <font>
-            <Font name="Century Gothic" size="19.0" />
+            <Font name="Arial Bold" size="19.0" />
          </font></Button>
-      <Button fx:id="toplaces" contentDisplay="BOTTOM" layoutX="206.0" layoutY="225.0" mnemonicParsing="false" onAction="#presstoplaces" prefHeight="50.0" prefWidth="156.0" text="Famous Places" AnchorPane.bottomAnchor="125.66666666666669" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="225.0">
+      <Button fx:id="toFlags" contentDisplay="BOTTOM" layoutX="206.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleToFlags" prefHeight="50.0" prefWidth="156.0" style="-fx-background-color: #FFD700; -fx-border-radius: 5px;" text="Guess the Flag" AnchorPane.bottomAnchor="125.66666666666669" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="225.0">
          <font>
-            <Font name="Century Gothic" size="19.0" />
+            <Font name="Arial Bold" size="19.0" />
          </font></Button>
-      <Button fx:id="backtologin" layoutX="206.0" layoutY="288.0" mnemonicParsing="false" onAction="#goBackToLogin" prefHeight="50.0" prefWidth="156.0" text="Back" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="290.0">
+      <Button fx:id="backtologin" layoutX="206.0" layoutY="288.0" mnemonicParsing="false" onAction="#goBackToLogin" prefHeight="50.0" prefWidth="156.0" style="-fx-background-color: #FFD700; -fx-border-radius: 5px;" text="Back" AnchorPane.leftAnchor="206.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="290.0">
          <font>
-            <Font name="Century Gothic" size="19.0" />
+            <Font name="Arial Rounded MT Bold" size="19.0" />
          </font></Button>
       <ImageView fitHeight="68.0" fitWidth="73.0" layoutX="29.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
          <image>
-            <Image url="@../images/globeimages-removebg-preview.png" />
+            <Image url="@images/globeimages-removebg-preview.png" />
          </image>
       </ImageView>
-      <Button fx:id="HelpButton" layoutX="46.0" layoutY="350.0" mnemonicParsing="false" onAction="#displaytext" prefHeight="26.0" prefWidth="58.0" style="-fx-border-color: white; -fx-cursor: pointer;" text="Help" textAlignment="CENTER" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="48.0">
+      <Button fx:id="HelpButton" layoutX="46.0" layoutY="350.0" mnemonicParsing="false" onAction="#displaytext" prefHeight="26.0" prefWidth="58.0" style="-fx-cursor: pointer; -fx-background-color: #FFD700; -fx-border-radius: 5px;" text="Help" textAlignment="CENTER" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="48.0">
          <font>
-            <Font name="Century Gothic" size="12.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
       <ImageView fitHeight="37.0" fitWidth="51.0" layoutX="14.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="552.3105278015137">
-         <Image url="@../images/[removal.ai]_4a40d816-479c-4927-ab59-a48b4dc7a7b8-depositphotos_9198224-stock-illustration-globe-of-the-world.png" />
+         <Image url="@images/[removal.ai]_4a40d816-479c-4927-ab59-a48b4dc7a7b8-depositphotos_9198224-stock-illustration-globe-of-the-world.png" />
       </ImageView>
-
       <Text fill="#ffffffeb" layoutX="23.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" wrappingWidth="16.000030517578125">
          <font>
-            <Font name="Cambria Math" size="26.0" />
+            <Font name="Arial Bold" size="26.0" />
          </font>
       </Text>
       <Label fx:id="helpText" layoutX="110.0" layoutY="353.0" text="Choose 1 of the minigames to proceed, want to leave? Press the back button" textAlignment="CENTER" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="29.0" AnchorPane.rightAnchor="20.0">
@@ -52,7 +51,7 @@
       </Label>
       <ImageView fitHeight="68.0" fitWidth="73.0" layoutX="497.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
          <image>
-            <Image url="@../images/globeimages-removebg-preview.png" />
+            <Image url="@images/globeimages-removebg-preview.png" />
          </image>
       </ImageView>
    </AnchorPane>
