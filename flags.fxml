@@ -5,11 +5,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane prefHeight="532.0" prefWidth="746.0" style="-fx-background-color: linear-gradient(to bottom, #87CEEB, #1E90FF);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.FlagsController">
     <children>
-        <ImageView fx:id="flagDisplay" fitHeight="150" fitWidth="250" layoutX="289.0" layoutY="65.0" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 0.0, 0.0);" />
+        <ImageView fx:id="flagDisplay" fitHeight="150" fitWidth="250" layoutX="241.0" layoutY="14.0" preserveRatio="true" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 0.0, 0.0);" />
         <FlowPane fx:id="buttons" hgap="7.0" layoutX="212.0" layoutY="326.0" prefHeight="241.0" prefWidth="327.0" vgap="7.0">
             <children>
                 <Button focusTraversable="false" mnemonicParsing="false" onAction="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #003147; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-background-radius: 5;" text="A" />
@@ -40,17 +41,25 @@
                 <Button focusTraversable="false" mnemonicParsing="false" onAction="#onClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #003147; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-background-radius: 5;" text="Z" />
             </children>
         </FlowPane>
-        <Text fx:id="text" fill="#FFFFFF" layoutX="255.0" layoutY="283.0" stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold;" wrappingWidth="362.9286193847656" />
-        <Text fx:id="winStatus" fill="#FFFFFF" layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24px; -fx-font-family: 'Times New Roman'; -fx-font-weight: bold;" wrappingWidth="327.0" />
-        <Text fx:id="realWord" fill="#FFFFFF" layoutX="14.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24px; -fx-font-family: 'Times New Roman'; -fx-font-weight: bold;" wrappingWidth="327.0" />
-        <Label fx:id="countryName" layoutX="7" layoutY="5" style="-fx-font-size: 18px; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-weight: bold;" />
-        <Button fx:id="changeFlagButton" layoutX="618.0" layoutY="26.0" onAction="#handleChangeFlag" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #FFD700; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Change Flag" />
-        <Button fx:id="hintButton" layoutX="564.0" layoutY="26.0" onAction="#handleHint" style="-fx-background-color: #FFD700; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Hint" />
+        <Text fx:id="text" fill="#FFFFFF" layoutX="199.0" layoutY="209.0" stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 50px; -fx-font-family: 'Arial'; -fx-font-weight: bold;" wrappingWidth="351.7286682128906" />
+        <Label fx:id="countryName" layoutX="7" layoutY="5" opacity="0.0" style="-fx-font-size: 18px; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-weight: bold;" />
+        <Button fx:id="changeFlagButton" layoutX="14.0" layoutY="26.0" onAction="#handleChangeFlag" prefHeight="26.0" prefWidth="113.0" style="-fx-background-color: #FFD700; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Change Flag" />
+        <Button fx:id="hintButton" layoutX="666.0" layoutY="27.0" onAction="#handleHint" style="-fx-background-color: #FFD700; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Hint" />
+        <Pane fx:id="popupPane" layoutX="125.0" layoutY="125.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
+            <children>
+                <Text fx:id="popupMessage" fill="white" layoutX="107.0" layoutY="96.0" style="-fx-font-size: 24px; -fx-font-family: 'Arial'; -fx-font-weight: bold;" wrappingWidth="292.7999725341797" />
+                <Button fx:id="continueButton" layoutX="25.0" layoutY="200.0" onAction="#handleContinue" prefHeight="37.5" prefWidth="112.5" style="-fx-background-color: #FFD700; -fx-font-size: 16px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Continue" />
+                <Button fx:id="restartButton" layoutX="175.0" layoutY="200.0" onAction="#handleRestart" prefHeight="37.5" prefWidth="112.5" style="-fx-background-color: #FFD700; -fx-font-size: 16px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Restart" />
+                <Button fx:id="exitButton" layoutX="325.0" layoutY="200.0" onAction="#handleExit" prefHeight="37.5" prefWidth="112.5" style="-fx-background-color: #FFD700; -fx-font-size: 16px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" text="Exit" />
+            </children>
+        </Pane>
+        <Button fx:id="exitButton2" layoutX="140.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleExit" style="-fx-background-color: #FFD700;" text="Exit">
+            <font>
+                <Font name="Arial Bold" size="14.0" />
+            </font>
+        </Button>
+        <Text fx:id="realWord" layoutX="26.0" layoutY="81.0" opacity="0.0" text="Label" />
+        <Text fx:id="winStatus" layoutX="71.0" layoutY="81.0" opacity="0.0" text="Label" />
+        <Label fx:id="timerLabel" layoutX="675.0" layoutY="70.0" style="-fx-font-size: 18px; -fx-text-fill: #FFFFFF; -fx-font-family: 'Arial'; -fx-font-weight: bold;" />
     </children>
-    <Pane fx:id="popupPane" layoutX="100.0" layoutY="100.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;" visible="false">
-        <children>
-            <Text fx:id="popupMessage" layoutX="50.0" layoutY="150.0" fill="white" style="-fx-font-size: 24px; -fx-font-family: 'Arial'; -fx-font-weight: bold;" />
-            <Button layoutX="200.0" layoutY="200.0" text="OK" onAction="#handlePopupClose" style="-fx-background-color: #FFD700; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-background-radius: 5;" />
-        </children>
-    </Pane>
 </Pane>
