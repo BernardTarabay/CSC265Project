@@ -22,6 +22,10 @@ public class MainPageController {
     @FXML
     private Button backtologin;
 
+    private static final int window_height=600;
+    private static final int window_width=600;
+
+
     @FXML
     public void initialize() {
         helpText.setVisible(false);
@@ -67,6 +71,19 @@ public class MainPageController {
     public void handleToFlags(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Flags.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleToMapGame(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MapGame.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
